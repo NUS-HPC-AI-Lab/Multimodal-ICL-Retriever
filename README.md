@@ -1,7 +1,5 @@
 ## How Does the Textual Information Affect the Retrieval of Multimodal In-Context Learning?
 
----
-
 **EMNLP 2024 Main** | [Paper](https://arxiv.org/abs/2404.12866)
 
 This repository contains the source code for MSIER, which is a supervised in-context example retriever for multimodal in-context learning proposed in our paper “[How Does the Textual Information Affect the Retrieval of Multimodal In-Context Learning?](https://arxiv.org/abs/2404.12866)”, 
