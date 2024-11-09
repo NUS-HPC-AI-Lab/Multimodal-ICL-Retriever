@@ -1,0 +1,21 @@
+hydra:
+  job:
+    chdir: false
+model_name: 'openai/clip-vit-large-patch14'
+batch_size: 128
+eval_coco: True
+
+coco_train_image_dir_path: coco/train2014
+coco_val_image_dir_path: coco/val2014
+coco_karpathy_json_path: coco/dataset_coco.json
+coco_annotations_json_path: coco/annotations/captions_train2014.json
+
+pretrained_model_path: m_icl_50_1_coco_1e-5 # the trained msier model to load
+output_dir: coco_msier_cached_features # the output directory to save the cached features
+
+# parameters needed to initialize the bi-encoder model
+model_config:
+  _target_: eval.models.biencoder.BiEncoderConfig
+  q_model_name: ${model_name}
+  ctx_model_name: ${model_name}
+  norm_embed: true

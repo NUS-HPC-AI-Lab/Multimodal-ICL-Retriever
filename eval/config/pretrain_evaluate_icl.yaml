@@ -1,0 +1,47 @@
+hydra:
+  job:
+    chdir: false
+model_name: 'openai/clip-vit-large-patch14'
+model: open_flamingo
+rices_vision_encoder_path: ViT-L-14
+rices_vision_encoder_pretrained: openai
+vision_encoder_path: ViT-L-14
+vision_encoder_pretrained: openai
+
+rices: True
+lm_path: anas-awadalla/mpt-1b-redpajama-200b
+lm_tokenizer_path: anas-awadalla/mpt-1b-redpajama-200b
+cross_attn_every_n_layers: 1
+checkpoint_path: "open_flamingo/checkpoint.pt" # path to the pre-trained openflamingo checkpoint to load
+results_file: "results_coco_50_1_1e-5.json" # the file to save the results
+precision: amp_bf16
+batch_size: 8
+
+eval_coco: True
+
+trial_seeds: [42]
+shots: [4, 8, 16, 32]
+num_samples: -1
+num_trials: 1
+local_rank: 0
+rank: 0
+world_size: 0
+distributed: False
+horovod: False
+dist_url: env://
+dist_backend: nccl
+
+# coco
+coco_train_image_dir_path: "coco/train2014"
+coco_val_image_dir_path: "coco/val2014"
+coco_karpathy_json_path: "coco/dataset_coco.json"
+coco_annotations_json_path: "coco/annotations/captions_val2014.json"
+
+pretrained_model_path: m_icl_50_1_coco_1e-5 # the trained msier model to load
+cached_demonstration_features: coco_msier_cached_features
+
+model_config:
+  _target_: eval.models.biencoder.BiEncoderConfig
+  q_model_name: ${model_name}
+  ctx_model_name: ${model_name}
+  norm_embed: true

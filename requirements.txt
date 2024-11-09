@@ -1,0 +1,13 @@
+accelerate
+einops
+einops-exts
+transformers==4.33.1
+torch==2.3.0
+pillow
+open_clip_torch>=2.16.0 
+sentencepiece
+hydra-core
+datasets==2.14.5
+scikit-learn
+nltk
+faiss-cpu
