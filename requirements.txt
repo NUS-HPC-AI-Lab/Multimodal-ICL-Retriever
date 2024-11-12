@@ -1,4 +1,4 @@
-accelerate
+accelerate==0.23.0
 einops
 einops-exts
 transformers==4.33.1
