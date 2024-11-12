@@ -11,3 +11,4 @@ datasets==2.14.5
 scikit-learn
 nltk
 faiss-cpu
+pycocotools
